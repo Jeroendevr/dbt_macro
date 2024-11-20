@@ -1,0 +1,27 @@
+version: 2
+
+macros:
+  - name: id_on_latest
+    description: Select unique ID's based on their latest extraction
+    arguments:
+      - name: id
+        type: string
+        description: Column with ID's you want to have filtered
+      - name: extraction
+        type: timestamp
+        description: Column with extraction of ingestion timestamps
+      - name: table
+        type: table
+        description: The table containing the id and extraction columns.
+  - name: filter_id_latest
+    description: Filter out all the id with a max(extration) for a given table
+    arguments:
+      - name: id
+        type: string
+        description: Column with ID's you want to have filtered
+      - name: extraction
+        type: timestamp
+        description: Column with extraction of ingestion timestamps
+      - name: table
+        type: table
+        description: The table containing the id and extraction columns.
