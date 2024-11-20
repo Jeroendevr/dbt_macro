@@ -1,0 +1,1 @@
+# Usefull Jinja Macro to use in your DBT project
