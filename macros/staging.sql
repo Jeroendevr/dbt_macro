@@ -15,4 +15,3 @@ on latest_extraction.latest_extraction_at = {{ table }}.extracted_at
 order by {{ table }}.{{ id }} desc
 
 {% endmacro %}
-
