@@ -3,7 +3,7 @@
 -- Extract only on latest ID if there is a full copy. 
 -- Combination of ID where timestamp is greater
 {% macro id_on_latest(id, extraction, table) %}
-    select {{ id }}, max({{ extraction }}) as latest_extraction_at
+    select {{ id }} as unique_id, max({{ extraction }}) as latest_extraction_at
     from {{ table }}
     group by {{ id }}
 {% endmacro %}
@@ -12,6 +12,7 @@
     inner join
         ({{ id_on_latest(id, extraction, table) }}) as latest_extraction
         on latest_extraction.latest_extraction_at = {{ table }}.extracted_at
+        and latest_extraction.unique_id = {{ table }}.{{ id }}
 
     order by {{ table }}.{{ id }} desc
 
